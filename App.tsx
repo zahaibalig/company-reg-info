@@ -91,3 +91,22 @@ export default function App() {
     </Provider>
   );
 }
+
+
+useEffect(() => {
+  async function(){
+   const res = await axios.get(`https://jsonplaceholder.typicode.com/${query}`);
+   setData(res.data)
+  }
+ }, []);
+ But what about fetch data outside the hook with a method ? For instance,
+ 
+ const getData = () => {
+   async function(){
+   const res = await axios.get(`https://jsonplaceholder.typicode.com/${query}`);
+   setData(res.data)
+ }
+ 
+ useEffect(() => {
+  getData();     // here eslint shows an warning "Promise returned from setData is ignored"
+ }, [])
