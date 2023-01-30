@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  width: 40%;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .App-logo {
@@ -36,3 +40,44 @@
     transform: rotate(360deg);
   }
 }
+
+
+.inputDiv{
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  margin-top: 50px; 
+}
+input{
+  height: 30px;
+  font-size: large;
+  font-weight: bolder;
+  margin-right: 34px;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+button{
+  background-color: green;
+  color: white;
+  font-size: large;
+  width: 100px;
+  height: 36px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+table {
+  background-color: black;
+  align-items: center;
+}
+  
+th {
+  width: 170px;
+  background-color: white;
+  text-align: left;
+}
+
+td {
+  width: 180px;
+  background-color: white;
+ }

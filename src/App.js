@@ -1,29 +1,52 @@
-import logo from './logo.svg';
 import React , {useState} from 'react';
 import './App.css';
 import Axios from 'axios';
 
 function App() {
+  const [dataTable, setDataTable] = useState({}); 
+  const [RegNumber, setRegNumber] = useState("");  //    984851006
 
-  const [dataTable, setDataTable] = useState([]); 
-  const getCompaniInfo = () => {
-    Axios.get('https://data.brreg.no/enhetsregisteret/api/enheter/984851006')
-    // .then((res) => res.json() )
+  const getCompanyInfo = () => {
+    Axios.get(`https://data.brreg.no/enhetsregisteret/api/enheter/${RegNumber}`)
+    // .then((response) => response.json() )
     .then((response) => {
-      setDataTable(response);
-      console.log(response.data.navn);
+      setDataTable(response.data);
+      console.log(response.data);
       })
     .catch((error) => {
       console.log(error);
     });
   }
+  const handleChange = (RegNo) => {
+    setRegNumber(RegNo.target.value);
+  }
   return (
+   
     <div className="App">
-      <h1>Hello world </h1>
-      <button onClick={getCompaniInfo}>Get company info</button>
-      {/* <input type="text" >{dataTable.navn}</input> */}
-      <h3>{dataTable.navn}</h3>
+      <h1>Enter Company's Registration Number </h1>
+    
+      <input type="text" value={RegNumber} onChange= {handleChange}></input>
+      <button onClick= {() => getCompanyInfo(RegNumber)}
+      >Submit</button>
+    <div className='inputDiv'>
+      <table >
+        <tr>
+          <th>Navn</th>
+          <td>{dataTable.navn}</td></tr>
+        <tr>
+          <th>Hjemmeside</th>
+          <td>{dataTable.hjemmeside}</td>
+        </tr>
+        <tr>
+          <th>Registreringsdato</th>
+          <td>{dataTable.registreringsdatoEnhetsregisteret}</td></tr>
+        <tr>
+          <th>Organisasjonsnummer</th>
+          <td>{dataTable.organisasjonsnummer}</td>
+        </tr>
+      </table>
     </div>
+  </div>
   );
 }
 
