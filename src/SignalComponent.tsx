@@ -106,6 +106,7 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
                   text="Targets"
                 />
               </Box>
+              
             </>
           )}
         </VStack>
