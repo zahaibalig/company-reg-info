@@ -24,7 +24,6 @@ function App() {
    
     <div className="App">
       <h1>Enter Company's Registration Number </h1>
-    
       <input type="text" value={RegNumber} onChange= {handleChange}></input>
       <button onClick= {() => getCompanyInfo(RegNumber)}
       >Submit</button>
